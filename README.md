@@ -92,3 +92,17 @@ This project was developed as part of the ASP.NET module coursework at
 Richfield College of Southern Africa, Semester 2. All payment, shipping, and
 notification functionality is simulated for demonstration purposes only — no
 real transactions, courier bookings, or messages are processed or sent.
+
+
+## Deployment (Azure)
+
+This project was published to **Azure App Service**:
+
+1. Published from Visual Studio / `dotnet publish` targeting the Azure App
+   Service (Windows/Linux) resource.
+2. No database connection strings or app settings are required, since data is
+   stored in local JSON files under `App_Data/`.
+3. **Note:** Azure App Service's file system is not guaranteed to persist
+   across app restarts/scaling on all pricing tiers, so `App_Data/` should be
+   treated as demo storage — data may reset on redeploy or restart, which is
+   acceptable for this coursework demo.
