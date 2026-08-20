@@ -1,0 +1,142 @@
+[
+  {
+    "Id": "311f28334c7f4a28996b29ac065a0685",
+    "SellerId": "0d6fc70b551c4efaa11af9e2a215c408",
+    "Name": "Karoo Biltong \u0026 Dro\u00EBwors Box",
+    "Description": "A generous selection of grass-fed beef biltong, dro\u00EBwors and chili bites, packed in a rustic wooden crate.",
+    "Price": 449.00,
+    "Stock": 25,
+    "Category": "Snack Hampers",
+    "Labels": [
+      "Best Seller",
+      "Gift for Him",
+      "Braai"
+    ],
+    "ImageEmoji": "https://cdn.netflorist.co.za/layout/ResponsiveImages/409X522/RA3977~001.jpg",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8950171Z",
+    "UpdatedAt": "2026-08-20T06:32:42.7372601Z"
+  },
+  {
+    "Id": "835bf238f3b642c89f8510605e932e4a",
+    "SellerId": "0d6fc70b551c4efaa11af9e2a215c408",
+    "Name": "Farmstyle Breakfast Hamper",
+    "Description": "Local jams, rusks, honey and freshly roasted coffee beans for a lazy Sunday morning.",
+    "Price": 389.50,
+    "Stock": 18,
+    "Category": "Food Hampers",
+    "Labels": [
+      "Breakfast",
+      "Family"
+    ],
+    "ImageEmoji": "https://images.unsplash.com/photo-1623085524131-08baefa3e08a?w=600\u0026auto=format\u0026fit=crop\u0026q=60\u0026ixlib=rb-4.1.0\u0026ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RmFybXN0eWxlJTIwQnJlYWtmYXN0JTIwSGFtcGVyfGVufDB8fDB8fHww",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956464Z",
+    "UpdatedAt": "2026-08-20T06:32:41.8205203Z"
+  },
+  {
+    "Id": "d15283d0f8f142b9817d74c806726b26",
+    "SellerId": "0d6fc70b551c4efaa11af9e2a215c408",
+    "Name": "Ultimate Braai Master Crate",
+    "Description": "Everything for the ultimate braai: spice rubs, sauces, tongs and boerewors seasoning.",
+    "Price": 599.00,
+    "Stock": 12,
+    "Category": "Snack Hampers",
+    "Labels": [
+      "Gift for Him",
+      "Braai",
+      "Premium"
+    ],
+    "ImageEmoji": "https://images.unsplash.com/photo-1606677661991-446cea8ee182?w=600\u0026auto=format\u0026fit=crop\u0026q=60\u0026ixlib=rb-4.1.0\u0026ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fFVsdGltYXRlJTIwQnJhYWklMjBNYXN0ZXIlMjBDcmF0ZXxlbnwwfHwwfHx8MA%3D%3D",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956476Z",
+    "UpdatedAt": "2026-08-20T06:31:57.4287909Z"
+  },
+  {
+    "Id": "bf1f47779bf84e8dafb08d4c57b1ded1",
+    "SellerId": "9c17bc36129e48b99363facdd76a1b80",
+    "Name": "Rose \u0026 Relax Spa Hamper",
+    "Description": "Rose-scented bath salts, a soy candle, body butter and a soft towel wrap.",
+    "Price": 529.00,
+    "Stock": 20,
+    "Category": "Spa \u0026 Wellness",
+    "Labels": [
+      "Gift for Her",
+      "Spa",
+      "Best Seller"
+    ],
+    "ImageEmoji": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTgOKsF78V8iSu7zZ2tdobyNiJx457v4rP97WtOe_0EYA-6EBHe8zZDz9Cm3hQnJFh9OmcOhEqxNXN9eUGOrAbSq6SBXuoRBolDGDUIXHuJp_Aeo6-5FXFvXw\u0026usqp=CAc",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956485Z",
+    "UpdatedAt": "2026-08-20T06:35:57.5993333Z"
+  },
+  {
+    "Id": "4088598e33e748c094e616fe6fa5a4ea",
+    "SellerId": "9c17bc36129e48b99363facdd76a1b80",
+    "Name": "New Baby Bloom Box",
+    "Description": "Soft blankets, baby-safe skincare and a handwritten congratulations card.",
+    "Price": 459.00,
+    "Stock": 15,
+    "Category": "Baby \u0026 New Mom",
+    "Labels": [
+      "Baby",
+      "New Mom"
+    ],
+    "ImageEmoji": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSMlR2WaUpybhJeeNMNByURbQbpZGw95S-kvpjW1FuBD3LD-wNcVeRDywvrTjw57jk5ENgGdVjE3fLPemz_y4LlqZTRKZ6vgPDTrTS11reLkpemY0-owV85UA\u0026usqp=CAc",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956492Z",
+    "UpdatedAt": "2026-08-20T06:35:58.7194862Z"
+  },
+  {
+    "Id": "fde3ab5d425746f39cc4727367a295f1",
+    "SellerId": "9c17bc36129e48b99363facdd76a1b80",
+    "Name": "Self-Care Sunday Box",
+    "Description": "Face masks, herbal tea, a journal and calming lavender oil roller.",
+    "Price": 349.00,
+    "Stock": 30,
+    "Category": "Spa \u0026 Wellness",
+    "Labels": [
+      "Gift for Her",
+      "Wellness"
+    ],
+    "ImageEmoji": "https://images.unsplash.com/photo-1610551745215-1a4b5f36de8f?w=600\u0026auto=format\u0026fit=crop\u0026q=60\u0026ixlib=rb-4.1.0\u0026ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U2VsZi1DYXJlJTIwU3VuZGF5JTIwQm94fGVufDB8fDB8fHww",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956509Z",
+    "UpdatedAt": "2026-08-20T06:35:59.3809912Z"
+  },
+  {
+    "Id": "4b26d00cf3cb4584b2d94022c870abbe",
+    "SellerId": "9c17bc36129e48b99363facdd76a1b80",
+    "Name": "Festive Christmas Cheer Hamper",
+    "Description": "Mulled wine spices, shortbread, mince pies and festive decor for the holidays.",
+    "Price": 619.00,
+    "Stock": 10,
+    "Category": "Seasonal",
+    "Labels": [
+      "Christmas",
+      "Family",
+      "Premium"
+    ],
+    "ImageEmoji": "https://images.unsplash.com/photo-1770989064308-78baffbaa47e?w=600\u0026auto=format\u0026fit=crop\u0026q=60\u0026ixlib=rb-4.1.0\u0026ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RmVzdGl2ZSUyMENocmlzdG1hcyUyMENoZWVyJTIwSGFtcGVyfGVufDB8fDB8fHww",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956526Z",
+    "UpdatedAt": "2026-08-20T06:35:59.9638918Z"
+  },
+  {
+    "Id": "02e72472dccc45c3821c7b30f33ee56c",
+    "SellerId": "0d6fc70b551c4efaa11af9e2a215c408",
+    "Name": "Vegan Delights Snack Box",
+    "Description": "A plant-based selection of nut butters, dried fruit, trail mix and vegan chocolate.",
+    "Price": 379.00,
+    "Stock": 21,
+    "Category": "Food Hampers",
+    "Labels": [
+      "Vegan",
+      "Healthy"
+    ],
+    "ImageEmoji": "https://media.istockphoto.com/id/1357361736/photo/vegan-brunch-or-picnic-box.webp?a=1\u0026b=1\u0026s=612x612\u0026w=0\u0026k=20\u0026c=q3YZQcLAJOd2Mjj_vdSNaZGr4qFPkGV7hTY_5MfFX3k=",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8956532Z",
+    "UpdatedAt": "2026-08-20T06:14:31.8697674Z"
+  }
+]

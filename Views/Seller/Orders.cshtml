@@ -1,0 +1,50 @@
+@model List<Order>
+@{
+    ViewData["Title"] = "My Orders";
+    var statuses = Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().ToList();
+}
+<div class="container mt-4">
+    <h2 class="section-title">Orders Containing My Products</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">No orders yet.</p>
+    }
+    else
+    {
+        @foreach (var o in Model)
+        {
+            <div class="card card-hamper p-3 mb-3">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div>
+                        <h6 class="mb-1">Order @o.Id <span class="status-pill status-@(o.Status.ToString().ToLower())">@o.Status</span></h6>
+                        <p class="small text-muted mb-1">@o.BuyerName &middot; @o.BuyerEmail &middot; @o.BuyerPhone</p>
+                        <p class="small text-muted mb-1">Ship via @o.ShippingServiceName (@o.Carrier) &mdash; @o.ShippingPointName</p>
+                        <p class="small text-muted mb-0">Placed @o.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</p>
+                    </div>
+                    <div class="text-end">
+                        <form asp-controller="Seller" asp-action="UpdateOrderStatus" method="post" class="d-flex gap-2">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="orderId" value="@o.Id" />
+                            <select name="status" class="form-select form-select-sm">
+                                @foreach (var s in statuses)
+                                {
+                                    <option value="@s" selected="@(s == o.Status)">@s</option>
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-hamper">Update</button>
+                        </form>
+                    </div>
+                </div>
+                <hr />
+                @foreach (var item in o.Items.Where(i => i.SellerId == (string)ViewBag.CurrentSellerId))
+                {
+                    <div class="d-flex justify-content-between small">
+                        <span>@item.Quantity &times; @item.ProductName</span>
+                        <span>R@(item.LineTotal.ToString("N2"))</span>
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>

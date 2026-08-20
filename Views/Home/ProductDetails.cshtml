@@ -1,0 +1,76 @@
+@model ProductDetailsViewModel
+@{
+    ViewData["Title"] = Model.Product.Name;
+    var p = Model.Product;
+}
+
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Shop">Shop</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Shop" asp-route-category="@p.Category">@p.Category</a></li>
+            <li class="breadcrumb-item active">@p.Name</li>
+        </ol>
+    </nav>
+
+    <div class="row g-5">
+        <div class="col-md-5">
+            <div class="card card-hamper">
+                <div class="emoji-thumb" style="height: 320px; font-size: 7rem;">
+                        @if (p.ImageEmoji.StartsWith("http"))
+                        {
+                            <img src="@p.ImageEmoji" alt="@p.Name" />
+                        }
+                        else
+                        {
+                            @p.ImageEmoji
+                        }
+                        </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h1>@p.Name</h1>
+            <p class="text-muted mb-2">
+                Sold by <strong>@Model.Seller.DisplayName</strong> @Model.Seller.LogoEmoji
+                @if (!string.IsNullOrWhiteSpace(Model.Seller.Bio))
+                {
+                    <span> &mdash; @Model.Seller.Bio</span>
+                }
+            </p>
+
+            <div class="mb-3">
+                @foreach (var l in p.Labels)
+                {
+                    <span class="badge badge-label me-1">@l</span>
+                }
+            </div>
+
+            <p>@p.Description</p>
+
+            <div class="price-tag fs-3 mb-3">R@(p.Price.ToString("N2"))</div>
+
+            <p class="small text-muted">
+                @(p.Stock > 0 ? $"{p.Stock} in stock" : "Currently out of stock")
+                &middot; Category: @p.Category
+            </p>
+
+            <form asp-controller="Cart" asp-action="Add" method="post" class="row g-2 align-items-center mt-3">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="productId" value="@p.Id" />
+                <div class="col-auto">
+                    <input type="number" name="quantity" value="1" min="1" max="@Math.Max(1, p.Stock)" class="form-control" style="width: 90px;" />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-hamper btn-lg" @(p.Stock <= 0 ? "disabled" : "")>
+                        @(p.Stock <= 0 ? "Out of Stock" : "Add to Cart")
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-4 p-3 stat-card">
+                <p class="mb-1"><strong>📦 Shipping options at checkout:</strong></p>
+                <p class="small text-muted mb-0">Choose PAXI Standard/Express collection from a PEP store, or PEP Door-to-Door courier delivery.</p>
+            </div>
+        </div>
+    </div>
+</div>

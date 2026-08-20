@@ -1,0 +1,66 @@
+@model PaymentViewModel
+@{
+    ViewData["Title"] = "Payment";
+}
+<div class="container mt-4" style="max-width: 560px;">
+    <h2 class="section-title"><span class="step-badge">2</span>Payment</h2>
+
+    @{ var formErrors = ViewData.ModelState[""]; }
+    @if (formErrors != null && formErrors.Errors.Count > 0)
+    {
+        <div class="alert alert-danger">
+            @foreach (var err in formErrors.Errors)
+            {
+                <div>@err.ErrorMessage</div>
+            }
+        </div>
+    }
+
+    <div class="card card-hamper p-4">
+        <div class="d-flex justify-content-between mb-3">
+            <span>Order</span>
+            <strong>@Model.OrderId</strong>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <span>Total Due</span>
+            <span class="price-tag fs-4">R@(Model.Total.ToString("N2"))</span>
+        </div>
+
+        <form asp-controller="Checkout" asp-action="ProcessPayment" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="OrderId" />
+            <input type="hidden" asp-for="Total" />
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="CardHolder"></label>
+                <input asp-for="CardHolder" class="form-control" placeholder="J. Smith" />
+                <span asp-validation-for="CardHolder" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="CardNumber"></label>
+                <input asp-for="CardNumber" class="form-control" placeholder="4242 4242 4242 4242" />
+                <span asp-validation-for="CardNumber" class="text-danger small"></span>
+                <div class="form-text">Demo only &mdash; use any number. Try 4000 0000 0000 0002 to test a decline.</div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label class="form-label" asp-for="Expiry"></label>
+                    <input asp-for="Expiry" class="form-control" placeholder="12/28" />
+                    <span asp-validation-for="Expiry" class="text-danger small"></span>
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" asp-for="Cvv"></label>
+                    <input asp-for="Cvv" class="form-control" placeholder="123" />
+                    <span asp-validation-for="Cvv" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-hamper btn-lg w-100">Pay R@(Model.Total.ToString("N2"))</button>
+            <p class="small text-muted text-center mt-2 mb-0">🔒 This is a simulated payment gateway. No real card details are transmitted or stored.</p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

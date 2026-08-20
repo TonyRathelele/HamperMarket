@@ -1,0 +1,69 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "Manage Products";
+    var sellerNames = ViewBag.SellerNames as Dictionary<string, string> ?? new Dictionary<string, string>();
+}
+<div class="container mt-4">
+    <h2 class="section-title">🧺 Manage Products</h2>
+
+    <div class="table-responsive">
+        <table class="table table-hamper align-middle">
+            <thead>
+                <tr><th></th><th>Name</th><th>Seller</th><th>Category</th><th>Price</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>
+                                @if (p.ImageEmoji.StartsWith("http"))
+                                {
+                                    <img src="@p.ImageEmoji" alt="@p.Name" style="width: 40px; height: 40px; object-fit: cover; border-radius: 0.375rem;" />
+                                }
+                                else
+                                {
+                                    <span style="font-size:1.5rem;">@p.ImageEmoji</span>
+                                }
+                                </td>
+                        <td>
+                            @p.Name
+                            <div>
+                                @foreach (var l in p.Labels)
+                                {
+                                    <span class="badge badge-label me-1">@l</span>
+                                }
+                            </div>
+                        </td>
+                        <td>@sellerNames.GetValueOrDefault(p.SellerId, "Unknown")</td>
+                        <td>@p.Category</td>
+                        <td>R@(p.Price.ToString("N2"))</td>
+                        <td><span class="status-pill status-@(p.Status.ToString().ToLower())">@p.Status</span></td>
+                        <td class="text-nowrap">
+                            @if (p.Status != ProductStatus.Approved)
+                            {
+                                <form asp-controller="Admin" asp-action="ApproveProduct" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@p.Id" />
+                                    <button type="submit" class="btn btn-sm btn-hamper">Approve</button>
+                                </form>
+                            }
+                            @if (p.Status != ProductStatus.Rejected)
+                            {
+                                <form asp-controller="Admin" asp-action="RejectProduct" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@p.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Reject</button>
+                                </form>
+                            }
+                            <form asp-controller="Admin" asp-action="DeleteProduct" method="post" class="d-inline" onsubmit="return confirm('Delete this product permanently?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@p.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

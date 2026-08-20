@@ -1,0 +1,37 @@
+@model List<Order>
+@{
+    ViewData["Title"] = "All Orders";
+}
+<div class="container mt-4">
+    <h2 class="section-title">📦 All Orders</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">No orders yet.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hamper align-middle">
+                <thead>
+                    <tr><th>Order</th><th>Buyer</th><th>Items</th><th>Shipping</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var o in Model)
+                    {
+                        <tr>
+                            <td>@o.Id</td>
+                            <td>@o.BuyerName<div class="small text-muted">@o.BuyerEmail</div></td>
+                            <td class="small">@o.Items.Count item(s)</td>
+                            <td class="small">@o.ShippingServiceName<div class="text-muted">@o.ShippingPointName</div></td>
+                            <td>R@(o.Total.ToString("N2"))</td>
+                            <td><span class="status-pill status-@(o.PaymentStatus.ToString().ToLower())">@o.PaymentStatus</span></td>
+                            <td><span class="status-pill status-@(o.Status.ToString().ToLower())">@o.Status</span></td>
+                            <td class="small">@o.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

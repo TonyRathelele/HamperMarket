@@ -1,0 +1,61 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "My Products";
+}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="section-title mb-0">My Products</h2>
+        <a asp-controller="Seller" asp-action="CreateProduct" class="btn btn-hamper">➕ Add New Hamper</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">You haven't listed any hampers yet.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hamper align-middle">
+                <thead>
+                    <tr><th></th><th>Name</th><th>Category</th><th>Labels</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (p.ImageEmoji.StartsWith("http"))
+                                {
+                                    <img src="@p.ImageEmoji" alt="@p.Name" style="width: 40px; height: 40px; object-fit: cover; border-radius: 0.375rem;" />
+                                }
+                                else
+                                {
+                                    <span style="font-size:1.5rem;">@p.ImageEmoji</span>
+                                }
+                                </td>
+                            <td>@p.Name</td>
+                            <td>@p.Category</td>
+                            <td>
+                                @foreach (var l in p.Labels)
+                                {
+                                    <span class="badge badge-label me-1">@l</span>
+                                }
+                            </td>
+                            <td>R@(p.Price.ToString("N2"))</td>
+                            <td>@p.Stock</td>
+                            <td><span class="status-pill status-@(p.Status.ToString().ToLower())">@p.Status</span></td>
+                            <td class="text-nowrap">
+                                <a asp-controller="Seller" asp-action="EditProduct" asp-route-id="@p.Id" class="btn btn-sm btn-outline-hamper">Edit</a>
+                                <form asp-controller="Seller" asp-action="DeleteProduct" method="post" class="d-inline" onsubmit="return confirm('Delete this product?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@p.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

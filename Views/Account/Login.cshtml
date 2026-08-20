@@ -1,0 +1,44 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Log In";
+}
+<div class="container mt-5" style="max-width: 480px;">
+    <h2 class="section-title">Seller / Admin Login</h2>
+
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="alert alert-danger">@Model.Error</div>
+    }
+
+    <div class="card card-hamper p-4">
+        <form asp-controller="Account" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="you@example.com" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <button type="submit" class="btn btn-hamper w-100">Log In</button>
+        </form>
+    </div>
+
+    <div class="mt-3 small text-muted">
+        <p class="mb-1"><strong>Demo accounts:</strong></p>
+        <p class="mb-1">Admin &mdash; admin@hampermarket.demo / Admin@123</p>
+        <p class="mb-1">Approved seller &mdash; seller@hampermarket.demo / Seller@123</p>
+        <p class="mb-1">Pending seller (awaiting approval) &mdash; pending@hampermarket.demo / Seller@123</p>
+    </div>
+
+    <p class="mt-3">Not selling yet? <a asp-controller="Account" asp-action="RegisterSeller">Register as a seller</a></p>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,66 @@
+@model SellerDashboardViewModel
+@{
+    ViewData["Title"] = "Seller Dashboard";
+}
+<div class="container mt-4">
+    <h2 class="section-title">@Model.Seller.LogoEmoji @Model.Seller.DisplayName &mdash; Dashboard</h2>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-value">@Model.TotalProducts</div>
+                <div class="text-muted small">Products Listed</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-value">@Model.TotalOrders</div>
+                <div class="text-muted small">Orders Received</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-value">R@(Model.TotalRevenue.ToString("N2"))</div>
+                <div class="text-muted small">Revenue (paid orders)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <a asp-controller="Seller" asp-action="CreateProduct" class="btn btn-hamper w-100 py-3">➕ Add New Hamper</a>
+        </div>
+        <div class="col-md-4">
+            <a asp-controller="Seller" asp-action="Products" class="btn btn-outline-hamper w-100 py-3">🧺 Manage Products</a>
+        </div>
+        <div class="col-md-4">
+            <a asp-controller="Seller" asp-action="Orders" class="btn btn-outline-hamper w-100 py-3">📦 View Orders</a>
+        </div>
+    </div>
+
+    <h5 class="mb-3">Recent Orders</h5>
+    @if (!Model.RecentOrders.Any())
+    {
+        <p class="text-muted">No orders yet.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hamper">
+                <thead><tr><th>Order</th><th>Buyer</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+                <tbody>
+                    @foreach (var o in Model.RecentOrders)
+                    {
+                        <tr>
+                            <td>@o.Id</td>
+                            <td>@o.BuyerName</td>
+                            <td>R@(o.Total.ToString("N2"))</td>
+                            <td><span class="status-pill status-@(o.Status.ToString().ToLower())">@o.Status</span></td>
+                            <td>@o.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

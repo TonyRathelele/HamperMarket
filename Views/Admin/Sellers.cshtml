@@ -1,0 +1,54 @@
+@model List<User>
+@{
+    ViewData["Title"] = "Manage Sellers";
+}
+<div class="container mt-4">
+    <h2 class="section-title">👥 Manage Sellers</h2>
+
+    <div class="table-responsive">
+        <table class="table table-hamper align-middle">
+            <thead>
+                <tr><th></th><th>Business</th><th>Email</th><th>Phone</th><th>Status</th><th>Joined</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td style="font-size:1.5rem;">@s.LogoEmoji</td>
+                        <td>@s.DisplayName</td>
+                        <td>@s.Email</td>
+                        <td>@s.Phone</td>
+                        <td><span class="status-pill status-@(s.Status.ToString().ToLower())">@s.Status</span></td>
+                        <td>@s.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                        <td class="text-nowrap">
+                            @if (s.Status == SellerStatus.PendingApproval)
+                            {
+                                <form asp-controller="Admin" asp-action="ApproveSeller" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@s.Id" />
+                                    <button type="submit" class="btn btn-sm btn-hamper">Approve</button>
+                                </form>
+                            }
+                            @if (s.Status == SellerStatus.Approved)
+                            {
+                                <form asp-controller="Admin" asp-action="SuspendSeller" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@s.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Suspend</button>
+                                </form>
+                            }
+                            @if (s.Status == SellerStatus.Suspended)
+                            {
+                                <form asp-controller="Admin" asp-action="ReapproveSeller" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@s.Id" />
+                                    <button type="submit" class="btn btn-sm btn-hamper">Re-approve</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

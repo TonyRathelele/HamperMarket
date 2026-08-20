@@ -1,0 +1,115 @@
+@{
+    var isAuthed = User.Identity != null && User.Identity.IsAuthenticated;
+    var isAdmin = User.IsInRole("Admin");
+    var isSeller = User.IsInRole("Seller");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HamperMarket</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="demo-banner">
+        🧪 DEMO PLATFORM &mdash; payments, PEP/PAXI shipping, email &amp; SMS are all <strong>simulated</strong>. No real money or messages are sent.
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-hamper">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">🧺 HamperMarket</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Shop">Shop Hampers</a></li>
+                    @if (!isAuthed)
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="RegisterSeller">Sell on HamperMarket</a></li>
+                    }
+                    @if (isSeller)
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="Seller" asp-action="Dashboard">Seller Dashboard</a></li>
+                    }
+                    @if (isAdmin)
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Admin Panel</a></li>
+                    }
+                </ul>
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" asp-controller="Cart" asp-action="Index">
+                            🛒 Cart
+                        </a>
+                    </li>
+                    @if (isAuthed)
+                    {
+                        <li class="nav-item d-flex align-items-center">
+                            <span class="nav-link disabled">Hi, @User.Identity!.Name</span>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-hamper">Log out</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="btn btn-sm btn-hamper ms-2" asp-controller="Account" asp-action="Login">Seller / Admin Login</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @if (TempData["Toast"] != null)
+    {
+        <div class="container mt-3">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["Toast"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    }
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-white">🧺 HamperMarket</h5>
+                    <p class="small">A demo multi-seller marketplace for gift hampers, built with ASP.NET Core. Sellers list &amp; label their own hampers; buyers check out with simulated PEP/PAXI shipping and demo payments.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="text-white">Shop</h6>
+                    <ul class="list-unstyled small">
+                        <li><a asp-controller="Home" asp-action="Shop">Browse all hampers</a></li>
+                        <li><a asp-controller="Account" asp-action="RegisterSeller">Become a seller</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="text-white">Demo accounts</h6>
+                    <ul class="list-unstyled small">
+                        <li>Admin: admin@hampermarket.demo / Admin@123</li>
+                        <li>Seller: seller@hampermarket.demo / Seller@123</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary" />
+            <p class="small mb-0">&copy; @DateTime.Now.Year HamperMarket Demo. Not a real store.</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

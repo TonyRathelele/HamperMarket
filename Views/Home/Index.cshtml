@@ -1,0 +1,93 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "Handmade & Curated Gift Hampers";
+    var categories = ViewBag.Categories as List<string> ?? new List<string>();
+}
+
+<div class="hero text-center">
+    <div class="container">
+        <h1 class="fw-bold">Gift Hampers, Made by Real Small Businesses 🎁</h1>
+        <p class="lead col-lg-8 mx-auto">
+            HamperMarket connects you with independent hamper makers across South Africa &mdash;
+            from braai crates to spa boxes. Every hamper is labelled and curated by the seller who made it.
+        </p>
+        <div class="mt-4">
+            <a asp-controller="Home" asp-action="Shop" class="btn btn-hamper btn-lg px-4 me-2">Shop Hampers</a>
+            <a asp-controller="Account" asp-action="RegisterSeller" class="btn btn-outline-light btn-lg px-4">Become a Seller</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    @if (categories.Any())
+    {
+        <div class="text-center mb-4">
+            @foreach (var c in categories)
+            {
+                <a class="cat-pill" asp-controller="Home" asp-action="Shop" asp-route-category="@c">@c</a>
+            }
+        </div>
+    }
+
+    <h2 class="section-title">Featured Hampers</h2>
+    <div class="row g-4">
+        @foreach (var p in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card card-hamper h-100">
+                    <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@p.Id" class="text-decoration-none text-reset">
+                        <div class="emoji-thumb">
+                                @if (p.ImageEmoji.StartsWith("http"))
+                                {
+                                    <img src="@p.ImageEmoji" alt="@p.Name" />
+                                }
+                                else
+                                {
+                                    @p.ImageEmoji
+                                }
+                                </div>
+                        <div class="card-body">
+                            <h6 class="mb-1">@p.Name</h6>
+                            <div class="mb-2">
+                                @foreach (var l in p.Labels.Take(2))
+                                {
+                                    <span class="badge badge-label me-1">@l</span>
+                                }
+                            </div>
+                            <div class="price-tag">R@(p.Price.ToString("N2"))</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">No hampers yet &mdash; check back soon, or <a asp-controller="Account" asp-action="RegisterSeller">become the first seller</a>!</p>
+    }
+
+    <div class="row mt-5 mb-5 text-center">
+        <div class="col-md-4 mb-3">
+            <div class="stat-card h-100">
+                <div class="fs-1">🧺</div>
+                <h5>Curated by Real Sellers</h5>
+                <p class="text-muted small mb-0">Every hamper is listed and labelled by the small business that packed it.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="stat-card h-100">
+                <div class="fs-1">📦</div>
+                <h5>PEP &amp; PAXI Delivery</h5>
+                <p class="text-muted small mb-0">Collect from your nearest PEP/PAXI point, or get door-to-door courier delivery.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="stat-card h-100">
+                <div class="fs-1">🔒</div>
+                <h5>Simple, Secure Checkout</h5>
+                <p class="text-muted small mb-0">Fast demo checkout with instant email &amp; SMS order confirmation.</p>
+            </div>
+        </div>
+    </div>
+</div>

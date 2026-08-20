@@ -1,0 +1,54 @@
+[
+  {
+    "Id": "8594bb19364b4e5caeb2cef665c5395e",
+    "Role": 0,
+    "Email": "admin@hampermarket.demo",
+    "PasswordHash": "wAKFqfXN0y0enzXRh7CNdhmpr/FQhXD0gJaDuj2wGoA=",
+    "PasswordSalt": "SNt6hS81g5peMjGdj4OuNQ==",
+    "DisplayName": "Marketplace Admin",
+    "Phone": "0800 000 000",
+    "Bio": null,
+    "LogoEmoji": "\uD83D\uDEE0\uFE0F",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.6563506Z"
+  },
+  {
+    "Id": "0d6fc70b551c4efaa11af9e2a215c408",
+    "Role": 1,
+    "Email": "seller@hampermarket.demo",
+    "PasswordHash": "OzhlAD\u002BO1ltLxEairgZVTl/8ZgIYt8tNm48hUgGg3uc=",
+    "PasswordSalt": "Q/iBgB\u002BKZ2B3pf19K5\u002BzjQ==",
+    "DisplayName": "Karoo Gift Co.",
+    "Phone": "082 555 0101",
+    "Bio": "Handmade Karoo-style gourmet hampers, biltong boxes and biscuits.",
+    "LogoEmoji": "\uD83E\uDDFA",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.7807751Z"
+  },
+  {
+    "Id": "9c17bc36129e48b99363facdd76a1b80",
+    "Role": 1,
+    "Email": "bloom@hampermarket.demo",
+    "PasswordHash": "D5vqnuX5OXenWWGRhuKzZrth6o5XtzvNeGAAnmvDfp0=",
+    "PasswordSalt": "PTGSDTOcQgBDbb7KK\u002BGSHw==",
+    "DisplayName": "Bloom \u0026 Basket",
+    "Phone": "082 555 0202",
+    "Bio": "Spa, wellness and flower-themed gift hampers for every occasion.",
+    "LogoEmoji": "\uD83C\uDF38",
+    "Status": 1,
+    "CreatedAt": "2026-08-20T05:51:38.8400325Z"
+  },
+  {
+    "Id": "be69fa572c7740c4a19ec09672c12b15",
+    "Role": 1,
+    "Email": "pending@hampermarket.demo",
+    "PasswordHash": "ThUnl0KcvAeiKYy3AA3WL\u002B0R8e5hvgkd7ygRYVNiQNY=",
+    "PasswordSalt": "D8hAoJAxdvV6PRKoTWOqeg==",
+    "DisplayName": "New Seller Co.",
+    "Phone": "082 555 0303",
+    "Bio": "A brand new seller awaiting admin approval (demo of the approval flow).",
+    "LogoEmoji": "\uD83C\uDD95",
+    "Status": 0,
+    "CreatedAt": "2026-08-20T05:51:38.8926641Z"
+  }
+]

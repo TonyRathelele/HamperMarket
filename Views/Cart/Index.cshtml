@@ -1,0 +1,77 @@
+@model CartViewModel
+@{
+    ViewData["Title"] = "Your Cart";
+}
+<div class="container mt-4">
+    <h2 class="section-title">Your Cart</h2>
+
+    @if (!Model.Lines.Any())
+    {
+        <div class="card card-hamper p-5 text-center">
+            <div class="fs-1 mb-2">🛒</div>
+            <p class="text-muted">Your cart is empty.</p>
+            <a asp-controller="Home" asp-action="Shop" class="btn btn-hamper">Browse Hampers</a>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table align-middle table-hamper">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Hamper</th>
+                        <th>Price</th>
+                        <th style="width: 140px;">Quantity</th>
+                        <th>Line Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var line in Model.Lines)
+                    {
+                        <tr>
+                            <td style="font-size: 2rem;">@line.Product.ImageEmoji</td>
+                            <td>
+                                <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@line.Product.Id" class="text-reset">
+                                    @line.Product.Name
+                                </a>
+                            </td>
+                            <td>R@(line.Product.Price.ToString("N2"))</td>
+                            <td>
+                                <form asp-controller="Cart" asp-action="UpdateQuantity" method="post" class="d-flex">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="productId" value="@line.Product.Id" />
+                                    <input type="number" name="quantity" value="@line.Quantity" min="1" max="@Math.Max(1, line.Product.Stock)" class="form-control form-control-sm me-1" style="width: 70px;" />
+                                    <button type="submit" class="btn btn-sm btn-outline-hamper">Update</button>
+                                </form>
+                            </td>
+                            <td class="price-tag">R@(line.LineTotal.ToString("N2"))</td>
+                            <td>
+                                <form asp-controller="Cart" asp-action="Remove" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="productId" value="@line.Product.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-md-4">
+                <div class="card card-hamper p-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <strong>R@(Model.Subtotal.ToString("N2"))</strong>
+                    </div>
+                    <p class="small text-muted">Shipping calculated at checkout.</p>
+                    <a asp-controller="Checkout" asp-action="Index" class="btn btn-hamper w-100">Proceed to Checkout</a>
+                    <a asp-controller="Home" asp-action="Shop" class="btn btn-outline-hamper w-100 mt-2">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

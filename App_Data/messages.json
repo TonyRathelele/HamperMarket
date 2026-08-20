@@ -1,0 +1,101 @@
+[
+  {
+    "Id": "6454296c808841a7bbd170e2a1cb5b93",
+    "Channel": 0,
+    "To": "seller@hampermarket.demo",
+    "Subject": "\u0022Vegan Delights Snack Box\u0022 approved - HamperMarket",
+    "Body": "Hi Karoo Gift Co.,\n\nYour product \u0022Vegan Delights Snack Box\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:14:31.8741068Z"
+  },
+  {
+    "Id": "8979cecc7d76475293918dbf613eb943",
+    "Channel": 0,
+    "To": "tonyrathelele@gmail.com",
+    "Subject": "Order HM-FD49B5CB confirmed - HamperMarket",
+    "Body": "Hi tony rathelele,\n\nThank you for your order! We\u0027ve received payment of R444.00 (ref PAY-38AAF89436).\n\nShipping: PAXI Standard via Paxi\nCollect from: PEP Polokwane Mall, Grobler St\nTracking number: PAXI-582622ZA\n\nWe\u0027ll let you know the moment it ships.\n\n- The HamperMarket Team",
+    "RelatedOrderId": "HM-FD49B5CB",
+    "SentAt": "2026-08-20T06:26:05.7253174Z"
+  },
+  {
+    "Id": "47696aec4c294146b49686cdcb2d676b",
+    "Channel": 1,
+    "To": "0726309462",
+    "Subject": "SMS",
+    "Body": "HamperMarket: Order HM-FD49B5CB confirmed! R444.00 paid. Tracking: PAXI-582622ZA. Thank you for shopping with us!",
+    "RelatedOrderId": "HM-FD49B5CB",
+    "SentAt": "2026-08-20T06:26:05.7344165Z"
+  },
+  {
+    "Id": "980decaf435645ac90c67167be1fe36f",
+    "Channel": 0,
+    "To": "seller@hampermarket.demo",
+    "Subject": "New order HM-FD49B5CB - HamperMarket",
+    "Body": "Hi Karoo Gift Co.,\n\nYou have a new paid order!\n\n  - 1 x Vegan Delights Snack Box (R379.00)\n\nShip via: PAXI Standard\nCollect from: PEP Polokwane Mall, Grobler St\n\nPlease prepare this order for dispatch.\n\n- HamperMarket",
+    "RelatedOrderId": "HM-FD49B5CB",
+    "SentAt": "2026-08-20T06:26:05.7375645Z"
+  },
+  {
+    "Id": "eece75dd7a5e42c2a7dd28887ec2e605",
+    "Channel": 0,
+    "To": "seller@hampermarket.demo",
+    "Subject": "\u0022Ultimate Braai Master Crate\u0022 approved - HamperMarket",
+    "Body": "Hi Karoo Gift Co.,\n\nYour product \u0022Ultimate Braai Master Crate\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:31:57.4319534Z"
+  },
+  {
+    "Id": "d21871979eca473daf50d6a284dacfb8",
+    "Channel": 0,
+    "To": "seller@hampermarket.demo",
+    "Subject": "\u0022Farmstyle Breakfast Hamper\u0022 approved - HamperMarket",
+    "Body": "Hi Karoo Gift Co.,\n\nYour product \u0022Farmstyle Breakfast Hamper\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:32:41.8282614Z"
+  },
+  {
+    "Id": "3b4c9dca18ce4ec8a63fad2a27e3d863",
+    "Channel": 0,
+    "To": "seller@hampermarket.demo",
+    "Subject": "\u0022Karoo Biltong \u0026 Dro\u00EBwors Box\u0022 approved - HamperMarket",
+    "Body": "Hi Karoo Gift Co.,\n\nYour product \u0022Karoo Biltong \u0026 Dro\u00EBwors Box\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:32:42.7384389Z"
+  },
+  {
+    "Id": "f5ae7bbcf9834474ba11f490fe830e7c",
+    "Channel": 0,
+    "To": "bloom@hampermarket.demo",
+    "Subject": "\u0022Rose \u0026 Relax Spa Hamper\u0022 approved - HamperMarket",
+    "Body": "Hi Bloom \u0026 Basket,\n\nYour product \u0022Rose \u0026 Relax Spa Hamper\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:35:57.6003643Z"
+  },
+  {
+    "Id": "23c7a480f72c4d6fa4784d971f65ab1b",
+    "Channel": 0,
+    "To": "bloom@hampermarket.demo",
+    "Subject": "\u0022New Baby Bloom Box\u0022 approved - HamperMarket",
+    "Body": "Hi Bloom \u0026 Basket,\n\nYour product \u0022New Baby Bloom Box\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:35:58.721916Z"
+  },
+  {
+    "Id": "7bf3a90b72b84651a317658ab76698b4",
+    "Channel": 0,
+    "To": "bloom@hampermarket.demo",
+    "Subject": "\u0022Self-Care Sunday Box\u0022 approved - HamperMarket",
+    "Body": "Hi Bloom \u0026 Basket,\n\nYour product \u0022Self-Care Sunday Box\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:35:59.3821379Z"
+  },
+  {
+    "Id": "d102686143094d798cff585da2600600",
+    "Channel": 0,
+    "To": "bloom@hampermarket.demo",
+    "Subject": "\u0022Festive Christmas Cheer Hamper\u0022 approved - HamperMarket",
+    "Body": "Hi Bloom \u0026 Basket,\n\nYour product \u0022Festive Christmas Cheer Hamper\u0022 is now live in the HamperMarket shop.\n\n- The HamperMarket Team",
+    "RelatedOrderId": null,
+    "SentAt": "2026-08-20T06:35:59.9650668Z"
+  }
+]

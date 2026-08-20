@@ -1,0 +1,54 @@
+@model Order
+@{
+    ViewData["Title"] = "Order Confirmed";
+}
+<div class="container mt-4" style="max-width: 700px;">
+    <div class="text-center mb-4">
+        <div class="fs-1">✅</div>
+        <h2>Thank you, @Model.BuyerName!</h2>
+        <p class="text-muted">Your order <strong>@Model.Id</strong> has been confirmed.</p>
+    </div>
+
+    <div class="card card-hamper p-4 mb-4">
+        <h5 class="mb-3">Order Summary</h5>
+        @foreach (var item in Model.Items)
+        {
+            <div class="d-flex justify-content-between small mb-1">
+                <span>@item.Quantity &times; @item.ProductName <span class="text-muted">(@item.SellerName)</span></span>
+                <span>R@(item.LineTotal.ToString("N2"))</span>
+            </div>
+        }
+        <hr />
+        <div class="d-flex justify-content-between small">
+            <span>Subtotal</span><span>R@(Model.Subtotal.ToString("N2"))</span>
+        </div>
+        <div class="d-flex justify-content-between small">
+            <span>Shipping (@Model.ShippingServiceName)</span><span>R@(Model.ShippingCost.ToString("N2"))</span>
+        </div>
+        <div class="d-flex justify-content-between fs-5 mt-2">
+            <strong>Total</strong><strong class="price-tag">R@(Model.Total.ToString("N2"))</strong>
+        </div>
+    </div>
+
+    <div class="card card-hamper p-4 mb-4">
+        <h5 class="mb-3">📦 Shipping via @Model.Carrier</h5>
+        <p class="mb-1"><strong>@Model.ShippingPointName</strong></p>
+        <p class="text-muted small mb-2">@Model.ShippingPointAddress</p>
+        <p class="mb-0">Tracking number: <strong>@Model.TrackingNumber</strong></p>
+    </div>
+
+    <div class="card card-hamper p-4 mb-4">
+        <h5 class="mb-3">💳 Payment</h5>
+        <p class="mb-1">Status: <span class="status-pill status-@(Model.PaymentStatus.ToString().ToLower())">@Model.PaymentStatus</span></p>
+        <p class="mb-0 small text-muted">Reference: @Model.PaymentReference</p>
+    </div>
+
+    <div class="alert alert-info">
+        📧 A confirmation email was sent to <strong>@Model.BuyerEmail</strong> and an SMS to <strong>@Model.BuyerPhone</strong> (simulated).
+        You can view exactly what was sent on the <a asp-controller="Admin" asp-action="Messages">simulated messages log</a> (admin login required) for this demo.
+    </div>
+
+    <div class="text-center">
+        <a asp-controller="Home" asp-action="Shop" class="btn btn-hamper">Continue Shopping</a>
+    </div>
+</div>
