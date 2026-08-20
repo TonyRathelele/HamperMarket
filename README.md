@@ -34,7 +34,7 @@ products, orders, and simulated notifications) is persisted to JSON files under
 
 ## Technology Stack
 
-- ASP.NET Core 8 (MVC, Razor Views)
+- ASP.NET Core 10 (MVC, Razor Views)
 - C#
 - Bootstrap 5 (vendored locally)
 - Custom JSON file-based data store (no database/SQLite)
